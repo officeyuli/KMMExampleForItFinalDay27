@@ -31,6 +31,7 @@ kotlin {
                 implementation(Develop.Ktor.commonLogging)
                 implementation(Develop.Ktor.commonSerialization)
                 implementation(Develop.koinCore)
+                implementation(Develop.multiplatformSettings)
 
             }
         }
@@ -40,6 +41,7 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
                 implementation(Develop.Ktor.commonTest)
                 implementation(Develop.koinTest)
+                implementation(Develop.multiplatformSettingsTest)
 
             }
         }

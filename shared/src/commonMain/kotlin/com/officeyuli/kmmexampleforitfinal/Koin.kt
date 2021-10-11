@@ -2,7 +2,6 @@ package com.officeyuli.kmmexampleforitfinal
 
 import com.officeyuli.kmmexampleforitfinal.ktor.CafeApi
 import com.officeyuli.kmmexampleforitfinal.ktor.CafeApiImpl
-import kotlinx.coroutines.Dispatchers
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module

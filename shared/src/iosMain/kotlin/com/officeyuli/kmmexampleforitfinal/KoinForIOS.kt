@@ -1,5 +1,7 @@
 package com.officeyuli.kmmexampleforitfinal
 
+import com.russhwolf.settings.AppleSettings
+import com.russhwolf.settings.Settings
 import kotlinx.cinterop.ObjCClass
 import kotlinx.cinterop.getOriginalKotlinClass
 import org.koin.core.Koin
@@ -11,6 +13,7 @@ import platform.Foundation.NSUserDefaults
 
 fun initKoinIos(userDefaults: NSUserDefaults,doOnStartup: () ->Unit): KoinApplication = initKoin(
     module{
+        single<Settings>{ AppleSettings(userDefaults) }
         single { doOnStartup }
     }
 )
