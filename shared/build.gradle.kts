@@ -30,6 +30,8 @@ kotlin {
                 implementation(Develop.Ktor.commonJson)
                 implementation(Develop.Ktor.commonLogging)
                 implementation(Develop.Ktor.commonSerialization)
+                implementation(Develop.koinCore)
+
             }
         }
         val commonTest by getting {
@@ -37,6 +39,7 @@ kotlin {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
                 implementation(Develop.Ktor.commonTest)
+                implementation(Develop.koinTest)
 
             }
         }

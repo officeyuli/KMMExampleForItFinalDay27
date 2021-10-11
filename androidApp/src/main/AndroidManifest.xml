@@ -3,6 +3,7 @@
     package="com.officeyuli.kmmexampleforitfinal.android">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:name=".CafeApplication"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">

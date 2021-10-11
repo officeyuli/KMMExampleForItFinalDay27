@@ -1,12 +1,11 @@
 package com.officeyuli.kmmexampleforitfinal
 
 import com.officeyuli.kmmexampleforitfinal.ktor.CafeApi
-import com.officeyuli.kmmexampleforitfinal.ktor.CafeApiImpl
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class DataRepository {
+class DataRepository :KoinComponent{
 
-    private val ktorApi:CafeApi by lazy{
-        CafeApiImpl()
-    }
+    private val ktorApi:CafeApi by inject()
     suspend fun fetchCafesFromNetwork(cityName: String) =ktorApi.fetchCafeFromApi(cityName)
 }

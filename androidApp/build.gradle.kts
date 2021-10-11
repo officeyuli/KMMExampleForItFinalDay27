@@ -14,6 +14,8 @@ dependencies {
     implementation(Develop.AndroidX.lifecycle_runtime)
     implementation(Develop.AndroidX.lifecycle_viewmodel)
     implementation(Develop.AndroidX.lifecycle_viewmodel_extensions)
+    implementation(Develop.koinAndroid)
+    implementation(Develop.koinCore)
 
 }
 

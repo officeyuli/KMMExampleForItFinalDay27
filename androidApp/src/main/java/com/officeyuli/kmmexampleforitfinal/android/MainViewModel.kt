@@ -5,11 +5,11 @@ import com.officeyuli.kmmexampleforitfinal.DataRepository
 import com.officeyuli.kmmexampleforitfinal.ktor.response.CafeResponseItem
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class MainViewModel : ViewModel() {
-    private val dataRepository: DataRepository by lazy{
-        DataRepository()
-    }
+class MainViewModel : ViewModel(), KoinComponent {
+    private val dataRepository: DataRepository by inject()
 
     private val cafeListMutableLiveData = MutableLiveData<List<CafeResponseItem>>()
     val cafeListLiveData: LiveData<List<CafeResponseItem>> = Transformations.map(cafeListMutableLiveData) { it }
