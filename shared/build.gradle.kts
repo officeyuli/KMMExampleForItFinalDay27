@@ -4,6 +4,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("kotlinx-serialization")
+    id("com.squareup.sqldelight")
 
 }
 
@@ -32,6 +33,8 @@ kotlin {
                 implementation(Develop.Ktor.commonSerialization)
                 implementation(Develop.koinCore)
                 implementation(Develop.multiplatformSettings)
+                implementation(Develop.SqlDelight.runtime)
+                implementation(Develop.SqlDelight.coroutinesExtensions)
 
             }
         }
@@ -46,8 +49,10 @@ kotlin {
             }
         }
         val androidMain by getting {
-            dependencies{
+            dependencies {
                 implementation(Develop.Ktor.androidCore)
+                implementation(Develop.SqlDelight.driverAndroid)
+
             }
         }
         val androidTest by getting {
@@ -57,8 +62,10 @@ kotlin {
             }
         }
         val iosMain by getting {
-            dependencies{
+            dependencies {
                 implementation(Develop.Ktor.ios)
+                implementation(Develop.SqlDelight.driverIos)
+
             }
         }
         val iosTest by getting
@@ -71,5 +78,11 @@ android {
     defaultConfig {
         minSdkVersion(23)
         targetSdkVersion(30)
+    }
+}
+
+sqldelight {
+    database("CafeDB") {
+        packageName = "com.officeyuli.kmmexampleforitfinal"
     }
 }

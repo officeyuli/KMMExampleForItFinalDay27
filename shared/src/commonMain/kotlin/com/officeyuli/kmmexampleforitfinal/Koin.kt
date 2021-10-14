@@ -2,6 +2,8 @@ package com.officeyuli.kmmexampleforitfinal
 
 import com.officeyuli.kmmexampleforitfinal.ktor.CafeApi
 import com.officeyuli.kmmexampleforitfinal.ktor.CafeApiImpl
+import com.officeyuli.kmmexampleforitfinal.sqldelight.DatabaseHelper
+import kotlinx.coroutines.Dispatchers
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -23,8 +25,15 @@ fun initKoin(appModule: Module) : KoinApplication {
     return koinApplication
 }
 private val coreModule = module{
-    single<CafeApi>{
+    single<CafeApi> {
         CafeApiImpl()
+    }
+
+    single {
+        DatabaseHelper(
+            get(),
+            Dispatchers.Default
+        )
     }
 }
 internal inline fun <reified T> Scope.getWith(vararg params: Any?): T {

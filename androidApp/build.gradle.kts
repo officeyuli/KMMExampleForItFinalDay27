@@ -16,6 +16,8 @@ dependencies {
     implementation(Develop.AndroidX.lifecycle_viewmodel_extensions)
     implementation(Develop.koinAndroid)
     implementation(Develop.koinCore)
+    implementation(Develop.SqlDelight.runtimeJdk)
+    implementation(Develop.SqlDelight.driverAndroid)
 
 }
 

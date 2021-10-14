@@ -1,0 +1,14 @@
+CREATE TABLE CAFE (
+    id TEXT NOT NULL PRIMARY KEY,
+    name TEXT,
+    address TEXT
+);
+
+insertCafe:
+INSERT INTO CAFE(id, name, address) VALUES (?,?,?);
+
+getAll:--
+SELECT * FROM CAFE;
+
+deleteAll:
+DELETE FROM CAFE;

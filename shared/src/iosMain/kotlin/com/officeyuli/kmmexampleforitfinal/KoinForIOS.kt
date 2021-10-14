@@ -2,6 +2,8 @@ package com.officeyuli.kmmexampleforitfinal
 
 import com.russhwolf.settings.AppleSettings
 import com.russhwolf.settings.Settings
+import com.squareup.sqldelight.db.SqlDriver
+import com.squareup.sqldelight.drivers.native.NativeSqliteDriver
 import kotlinx.cinterop.ObjCClass
 import kotlinx.cinterop.getOriginalKotlinClass
 import org.koin.core.Koin
@@ -34,4 +36,5 @@ fun Koin.get(objCClass: ObjCClass, qualifier: Qualifier?): Any {
 }
 
 actual val platformModule = module {
+    single<SqlDriver> { NativeSqliteDriver(CafeDB.Schema, "CafeDB") }
 }
