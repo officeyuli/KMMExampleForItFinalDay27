@@ -35,9 +35,6 @@ private val coreModule = module{
             Dispatchers.Default
         )
     }
-    single {
-        DataRepository()
-    }
 }
 internal inline fun <reified T> Scope.getWith(vararg params: Any?): T {
     return get(parameters = { parametersOf(*params) })
