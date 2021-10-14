@@ -42,9 +42,12 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
-                implementation(Develop.Ktor.commonTest)
                 implementation(Develop.koinTest)
                 implementation(Develop.multiplatformSettingsTest)
+                implementation(Develop.Ktor.commonTest)
+                implementation(Develop.Ktor.cio)
+                implementation("org.jetbrains.kotlin:kotlin-test")
+
 
             }
         }
@@ -59,6 +62,13 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
+                implementation(Develop.Coroutines.test)
+                implementation(Develop.KotlinTest.jvm)
+                implementation(Develop.KotlinTest.junit)
+                implementation(Develop.AndroidXTest.core)
+                implementation(Develop.AndroidXTest.junit)
+                implementation(Develop.AndroidXTest.runner)
+                implementation(Develop.AndroidXTest.rules)
             }
         }
         val iosMain by getting {
