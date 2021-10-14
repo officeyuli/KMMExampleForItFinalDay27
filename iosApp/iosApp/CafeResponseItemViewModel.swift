@@ -25,3 +25,19 @@ class CafeResponseItemViewModel: ObservableObject{
         }
     }
 }
+class CafeEntityItemViewModel:ObservableObject{
+    private var viewModel: IOSNativeViewModel? = nil
+    @Published
+    var cafes:[CAFE]? = nil
+    func initData(){
+        viewModel = IOSNativeViewModel{ [weak self] data in
+            self?.cafes = data
+
+        }
+    }
+    func onDestroy(){
+        viewModel?.onDestroy()
+        viewModel = nil
+    }
+    
+}

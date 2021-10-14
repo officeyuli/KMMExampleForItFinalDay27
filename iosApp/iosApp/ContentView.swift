@@ -2,20 +2,22 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-    @ObservedObject var cafeResponseItemViewModel =   CafeResponseItemViewModel(repository:DataRepository())
-	let greet = Greeting().greeting()
-
-	var body: some View {
+    @ObservedObject var cafeEntityViewModel = CafeEntityItemViewModel()
+    
+    var cafes: [CAFE]?
+    var body: some View{
         NavigationView {
-            List(cafeResponseItemViewModel.cafeResponseItemList, id: \.id) { cafe in
-                    CafeItemView(cafeResponseItem: cafe)
-                }
-                .navigationBarTitle(Text("CafeList"), displayMode: .large)
-                .onAppear(perform: {
-                    self.cafeResponseItemViewModel.fetch()
-                })
+            CafeListContent(cafelist: cafeEntityViewModel.cafes)
+            .navigationBarTitle(Text("CafeList"), displayMode: .large)
+            .onAppear(perform: {
+                self.cafeEntityViewModel.initData()
+            })
+            .onDisappear(perform: {
+                self.cafeEntityViewModel.onDestroy()
+            })
         }
-	}
+        
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -24,14 +26,29 @@ struct ContentView_Previews: PreviewProvider {
 	}
 }
 
+struct CafeListContent: View{
+    var cafelist: [CAFE]?
+    var body : some View {
+        ZStack{
+            if let cafes = cafelist {
+                List(cafes, id: \.id) { cafe in
+                    CafeItemView(cafeItem: cafe)
+                }
+            }else{
+                Text("Empty")
+            }
+        }
+    }
+}
+
 struct CafeItemView : View {
-    var cafeResponseItem: CafeResponseItem
+    var cafeItem: CAFE
 
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(cafeResponseItem.name).font(.headline)
-                Text(cafeResponseItem.id).font(.subheadline)
+                Text(cafeItem.name!).font(.headline)
+                Text(cafeItem.id).font(.subheadline)
             }
         }
     }
